@@ -696,7 +696,3 @@ To deploy this infrastructure, the following standard Terraform workflow is used
 
  
 **Verification**: The instance is visible, active, and running within the **AWS EC2 Console**.
-
-
-
-Would you like me to create a `.gitignore` file for this project to ensure your Terraform state files aren't accidentally uploaded to GitHub?
