@@ -559,3 +559,97 @@ Distributes traffic across multiple servers for availability and performance.
 
 Works with Auto Scaling to handle traffic spikes without downtime.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# AWS EC2 Launch and Terraform Provisioning
+
+## Task Objective
+- Learn AWS core concepts and Terraform  
+- Launch an EC2 instance manually using AWS Console  
+- Provision an EC2 instance using Terraform  
+- Document the complete process  
+
+---
+
+## Part 1: Launching an EC2 Instance Manually (AWS Console)
+
+### Steps Followed
+1. Logged in to AWS Management Console  
+2. Navigated to EC2 service  
+3. Clicked on **Launch Instance**  
+4. Selected **Amazon Linux 2 AMI**  
+5. Chose instance type **t3.micro**  
+6. Selected VPC and subnet  
+7. Configured security group to allow SSH (Port 22)  
+8. Created and selected a key pair  
+9. Launched the instance  
+
+---
+
+### EC2 Instance Running (Manual Creation)
+
+![EC2 Instance Running](images/ec2-instance-running.png)
+
+**Details:**
+- Instance State: Running  
+- Instance Type: t3.micro  
+- Public IPv4 Address assigned  
+- VPC and Subnet configured
+-
+<img width="1901" height="639" alt="image" src="https://github.com/user-attachments/assets/ca72f39e-7816-49b7-a0bd-f4fda0a35802" />
+
+
+---
+
+## Part 2: Provisioning EC2 Using Terraform
+
+### What is Terraform?
+Terraform is an Infrastructure as Code (IaC) tool used to define and manage cloud infrastructure using configuration files.
+
+---
+
+### Terraform Configuration Files
+
+#### provider.tf
+```hcl
+provider "aws" {
+  region = "ap-south-1"
+}
+main.tf
+resource "aws_instance" "terraform_ec2" {
+  ami           = "ami-0a1b648e2cd533174"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "Terraform-EC2"
+  }
+}
+Terraform Commands Used
+terraform init
+terraform validate
+terraform plan
+terraform apply
+Verification
+EC2 instance created successfully using Terraform
+
+Instance visible in AWS EC2 Console
+
+Conclusion
+Successfully launched an EC2 instance manually
+
+Successfully provisioned an EC2 instance using Terraform
+
+Understood the difference between manual provisioning and Infrastructure as Code
+
