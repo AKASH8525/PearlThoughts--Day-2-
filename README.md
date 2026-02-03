@@ -607,7 +607,7 @@ Works with Auto Scaling to handle traffic spikes without downtime.
 - Instance Type: t3.micro  
 - Public IPv4 Address assigned  
 - VPC and Subnet configured
--
+  
 <img width="1901" height="639" alt="image" src="https://github.com/user-attachments/assets/ca72f39e-7816-49b7-a0bd-f4fda0a35802" />
 
 
@@ -654,26 +654,25 @@ resource "aws_instance" "terraform_ec2" {
 
 ## 2. Explanation of Configuration
 
-* 
+
 **`terraform` block**: Defines the required AWS provider and its version.
 
 
-* 
+ 
 **`provider "aws"`**: Specifies the AWS region (**ap-south-1**) where the EC2 instance will be created.
 
 
-* 
+ 
 **`resource "aws_instance"`**: The core block that creates the EC2 instance.
 
 
-* 
+ 
 **`ami`**: The Amazon Machine Image (AMI) used as a template for the instance OS.
 
 
-* **`instance_type`**: Defines the CPU and memory; **t2.micro** is used here as it is Free Tier eligible.
+**`instance_type`**: Defines the CPU and memory; **t2.micro** is used here as it is Free Tier eligible.
 
-
-* 
+ 
 **`tags`**: Used to assign a name ("Terraform-EC2") and identify the resource in the console.
 
 
@@ -692,12 +691,10 @@ To deploy this infrastructure, the following standard Terraform workflow is used
 ---
 
 ## 4. Result
-
-* 
+ 
 **Deployment**: The EC2 instance was successfully created using the automated Terraform script.
 
-
-* 
+ 
 **Verification**: The instance is visible, active, and running within the **AWS EC2 Console**.
 
 
