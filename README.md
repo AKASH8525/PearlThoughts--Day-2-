@@ -618,16 +618,21 @@ Works with Auto Scaling to handle traffic spikes without downtime.
 ### What is Terraform?
 Terraform is an Infrastructure as Code (IaC) tool used to define and manage cloud infrastructure using configuration files.
 
----
+Terraform Configuration (EC2 Provisioning)
+Terraform File Used: main.tf
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
 
-### Terraform Configuration Files
-
-#### provider.tf
-```hcl
 provider "aws" {
   region = "ap-south-1"
 }
-main.tf
+
 resource "aws_instance" "terraform_ec2" {
   ami           = "ami-0a1b648e2cd533174"
   instance_type = "t2.micro"
@@ -636,20 +641,31 @@ resource "aws_instance" "terraform_ec2" {
     Name = "Terraform-EC2"
   }
 }
+Explanation of Configuration
+terraform block
+Defines the required AWS provider.
+
+provider "aws"
+Specifies the AWS region where the EC2 instance will be created.
+
+resource "aws_instance"
+Creates an EC2 instance.
+
+ami
+Amazon Machine Image used for the instance.
+
+instance_type
+EC2 instance size (t2.micro, Free Tier eligible).
+
+tags
+Used to name and identify the EC2 instance.
+
 Terraform Commands Used
 terraform init
 terraform validate
 terraform plan
 terraform apply
-Verification
-EC2 instance created successfully using Terraform
+Result
+EC2 instance successfully created using Terraform
 
-Instance visible in AWS EC2 Console
-
-Conclusion
-Successfully launched an EC2 instance manually
-
-Successfully provisioned an EC2 instance using Terraform
-
-Understood the difference between manual provisioning and Infrastructure as Code
-
+Instance visible and running in AWS EC2 Console
