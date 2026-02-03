@@ -615,11 +615,17 @@ Works with Auto Scaling to handle traffic spikes without downtime.
 
 ## Part 2: Provisioning EC2 Using Terraform
 
-### What is Terraform?
-Terraform is an Infrastructure as Code (IaC) tool used to define and manage cloud infrastructure using configuration files.
+# Terraform Configuration: EC2 Provisioning
 
-Terraform Configuration (EC2 Provisioning)
-Terraform File Used: main.tf
+This project demonstrates the automated provisioning of an **Amazon EC2 instance** using **Terraform**.
+
+---
+
+## 1. Configuration Overview (`main.tf`)
+
+The following HCL (HashiCorp Configuration Language) code is used to define the infrastructure:
+
+```hcl
 terraform {
   required_providers {
     aws = {
@@ -641,31 +647,59 @@ resource "aws_instance" "terraform_ec2" {
     Name = "Terraform-EC2"
   }
 }
-Explanation of Configuration
-terraform block
-Defines the required AWS provider.
 
-provider "aws"
-Specifies the AWS region where the EC2 instance will be created.
+```
 
-resource "aws_instance"
-Creates an EC2 instance.
+---
 
-ami
-Amazon Machine Image used for the instance.
+## 2. Explanation of Configuration
 
-instance_type
-EC2 instance size (t2.micro, Free Tier eligible).
+* 
+**`terraform` block**: Defines the required AWS provider and its version.
 
-tags
-Used to name and identify the EC2 instance.
 
-Terraform Commands Used
-terraform init
-terraform validate
-terraform plan
-terraform apply
-Result
-EC2 instance successfully created using Terraform
+* 
+**`provider "aws"`**: Specifies the AWS region (**ap-south-1**) where the EC2 instance will be created.
 
-Instance visible and running in AWS EC2 Console
+
+* 
+**`resource "aws_instance"`**: The core block that creates the EC2 instance.
+
+
+* 
+**`ami`**: The Amazon Machine Image (AMI) used as a template for the instance OS.
+
+
+* **`instance_type`**: Defines the CPU and memory; **t2.micro** is used here as it is Free Tier eligible.
+
+
+* 
+**`tags`**: Used to assign a name ("Terraform-EC2") and identify the resource in the console.
+
+
+
+---
+
+## 3. Terraform Commands Used
+
+To deploy this infrastructure, the following standard Terraform workflow is used:
+
+1. **`terraform init`**: Initializes the working directory and downloads the necessary AWS provider plugins.
+2. **`terraform validate`**: Checks the configuration files for syntax errors and internal consistency.
+3. **`terraform plan`**: Generates an execution plan, showing exactly what resources will be created before any changes are made.
+4. **`terraform apply`**: Executes the actions proposed in the plan to create the EC2 instance in the AWS Cloud.
+
+---
+
+## 4. Result
+
+* 
+**Deployment**: The EC2 instance was successfully created using the automated Terraform script.
+
+
+* 
+**Verification**: The instance is visible, active, and running within the **AWS EC2 Console**.
+
+
+
+Would you like me to create a `.gitignore` file for this project to ensure your Terraform state files aren't accidentally uploaded to GitHub?
